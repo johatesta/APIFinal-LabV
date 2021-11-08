@@ -15,7 +15,7 @@ class Pets(models.Model):
         (DOG, 'Perro'),
         (CAT, 'Gato')
     )
-    especie = models.CharField(max_length=1, choices=ESPECIE_CHOICES, default=DOG)
+    tamanio = models.CharField(max_length=1, choices=ESPECIE_CHOICES, default=DOG)
 
     PEQ = 'Pq'
     MED = 'Md'
@@ -25,7 +25,7 @@ class Pets(models.Model):
         (MED, 'Mediano'),
         (GDE, 'Grande')
     )
-    porte = models.CharField(max_length=2, choices=PORTE_CHOICES, default=GDE)
+    edad = models.CharField(max_length=2, choices=PORTE_CHOICES, default=GDE)
 
     CACHORRO = 'C'
     ADULTO = 'A'
@@ -37,12 +37,11 @@ class Pets(models.Model):
     nombre = models.CharField(max_length=50, null=False)
     edad = models.CharField(max_length=1, choices=IDADE_CHOICES, default=ADULTO)
     raza = models.CharField(max_length=100, null=False)
-    obs = models.TextField(max_length=500, null=True, blank=True)
     adopted = models.Boolean(default=False)
      
     def __str__(self):
-        return "pet_foto: {}\nEspecie: {}\nPorte: {}\nNome: {}\nIdade: {}\nRaça: {}\nObs.: {}"\
-        .format(self.pet_foto, self.especie, self.porte, self.nome, self.idade, self.raca, self.obs)
+        return "pet_foto: {}\nEspecie: {}\nTamanio: {}\nNome: {}\nEdad: {}\nRaza: {}"\
+        .format(self.pet_foto, self.tamanio, self.tamanio, self.nombre, self.edad, self.raza)
      
 class Estado_adoptivo(models.Model):
     adopted: models.ForeignKey(Pets,on_delete=models.CASCADE, verbose_name="Pets")
